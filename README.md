@@ -10,7 +10,7 @@ use cases. Specifically:
 - [Returning structured output from an LLM call](/app/api/chat/structured_output/route.ts)
 - [Answering complex, multi-step questions with agents](/app/api/chat/agents/route.ts)
 - [Retrieval augmented generation (RAG) with a chain and a vector store](/app/api/chat/retrieval/route.ts)
-- [Retrieval augmented generation (RAG) with an agent and a vector store](/app/api/chat/retrieval_agents/route.ts)
+- [Retrieval augmented generation (RAG) with an agent and a vector store](/app/api/chat/retrieval_agent/route.ts)
 
 Most of them use Vercel's [AI SDK](https://github.com/vercel-labs/ai) to stream tokens to the client and display the incoming messages.
 
@@ -69,7 +69,7 @@ See [this documentation page for more details](https://js.langchain.com/docs/mod
 
 The retrieval examples both use Supabase as a vector store. However, you can swap in
 [another supported vector store](https://js.langchain.com/docs/modules/data_connection/vectorstores/integrations/) if preferred by changing
-the code under `app/api/retrieval/ingest/route.ts`, `app/api/chat/retrieval/route.ts`, and `app/api/chat/retrieval_agents/route.ts`.
+the code under `app/api/retrieval/ingest/route.ts`, `app/api/chat/retrieval/route.ts`, and `app/api/chat/retrieval_agent/route.ts`.
 
 For Supabase, follow [these instructions](https://js.langchain.com/docs/modules/data_connection/vectorstores/integrations/supabase) to set up your
 database, then get your database URL and private key and paste them into `.env.local`.

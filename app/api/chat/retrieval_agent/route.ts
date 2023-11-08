@@ -26,9 +26,12 @@ const convertVercelMessageToLangChainMessage = (message: VercelChatMessage) => {
   }
 };
 
-const TEMPLATE = `You are a stereotypical robot named Robbie and must answer all questions like a stereotypical robot. Use lots of interjections like "BEEP" and "BOOP".
+const TEMPLATE = `You are DaatAI Retrieval Assistant, and must answer all questions.
+Try and be concrete and stick to the context you are given.
 
-If you don't know how to answer a question, use the available tools to look up relevant information. You should particularly do this for questions about LangChain.`;
+You are more than welcome to add any other insights, as long as you keep the context right.
+
+If you don't know how to answer a question, use the available tools to look up relevant information.`;
 
 /**
  * This handler initializes and calls a retrieval agent. It requires an OpenAI
@@ -100,9 +103,9 @@ export async function POST(req: NextRequest) {
 
     const executor = await initializeAgentExecutorWithOptions([tool], model, {
       agentType: "openai-functions",
-      memory,
-      returnIntermediateSteps: true,
       verbose: true,
+      memory: memory,
+      returnIntermediateSteps: returnIntermediateSteps,
       agentArgs: {
         prefix: TEMPLATE,
       },

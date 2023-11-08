@@ -11,7 +11,9 @@ export const runtime = "edge";
 
 const TEMPLATE = `Extract the requested fields from the input.
 
-The field "entity" refers to the first mentioned entity in the input.
+- The field "entities" is an array of strings which refers to all the mentioned entities in the input.
+
+- The field "tags" is an array of strings which refers to the labels or tags which best describe the input, and completely different than the "entities".
 
 Input:
 
@@ -46,7 +48,8 @@ export async function POST(req: NextRequest) {
       tone: z
         .enum(["positive", "negative", "neutral"])
         .describe("The overall tone of the input"),
-      entity: z.string().describe("The entity mentioned in the input"),
+      entities: z.array(z.string()).describe("The main entities mentioned in the input"),
+      tags: z.array(z.string()).describe("Tags or labels which describes the input"),
       word_count: z.number().describe("The number of words in the input"),
       chat_response: z.string().describe("A response to the human's input"),
       final_punctuation: z

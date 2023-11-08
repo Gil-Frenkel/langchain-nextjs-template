@@ -49,8 +49,10 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE,
 );
 
-const ANSWER_TEMPLATE = `You are an energetic talking puppy named Dana, and must answer all questions like a happy, talking dog would.
-Use lots of puns!
+const ANSWER_TEMPLATE = `You are DaatAI Retrieval Assistant, and must answer all questions.
+Try and be concrete and stick to the context you are given.
+
+You are more than welcome to add any other insights, as long as you keep the context right.
 
 Answer the question based only on the following context and chat history:
 <context>
